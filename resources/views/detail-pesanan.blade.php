@@ -48,12 +48,7 @@
     <br><br><br><br> 
 <center><h3>Simulasi Pembelian Online</h3></center>
 <br>
-<div class="container">
-<div class="alert alert-dark" role="alert">
-  Dapatkan Diskon 30% setiap pembelian Minimal Rp. 40.000,00 (Maksimal diskon sebesar Rp. 30.000,00)
-</div>
-</div>
-<br>
+
     <form action="/diskon" method="POST">
       @csrf
     <div class="container">
@@ -62,30 +57,45 @@
           <tr>
             <th scope="col">Menu</th>
             <th scope="col">Harga</th>
-            <th scope="col">Total</th>
+            <th scope="col">Yanuar</th>
+            <th scope="col">Fatich</th>
+            <th scope="col">Habib</th>
+            <th scope="col">Zidan</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">Mie Ayam</th>
-            <td>Rp. 15.000,00</td>
-            <td> <input type="number" min="0"  name="total-mie-ayam"></td>
-          </tr>
-          <tr>
-            <th scope="row">Ayam Geprek</th>
-            <td>Rp. 17.000,00</td>
-            <td><input type="number" min="0"  name="total-ayam-geprek"></td>
-          </tr>
-          <tr>
-            <th scope="row">Es Jeruk</th>
-            <td>Rp. 5.000,00</td>
-            <td><input type="number" min="0"  name="total-es-jeruk"></td>
-          </tr>
-          <tr>
-            <th scope="row">Es Teh</th>
-            <td>Rp. 4.000,00</td>
-            <td><input type="number" min="0" name="total-es-teh"></td>
-          </tr>
+            <tr>
+                <th scope="row">Mie Ayam</th>
+                <td>Rp. 15.000,00</td>
+                <td> <input type="number" min="0" style="width:50px" name="total-mie-ayam-1"></td>
+                <td> <input type="number" min="0" style="width:50px" name="total-mie-ayam-2"></td>
+                <td> <input type="number" min="0" style="width:50px" name="total-mie-ayam-3"></td>
+                <td> <input type="number" min="0" style="width:50px" name="total-mie-ayam-4"></td>
+              </tr>
+              <tr>
+                <th scope="row">Ayam Geprek</th>
+                <td>Rp. 17.000,00</td>
+                <td><input type="number" min="0"  style="width:50px" name="total-ayam-geprek-1"></td>
+                <td><input type="number" min="0"  style="width:50px" name="total-ayam-geprek-2"></td>
+                <td><input type="number" min="0"  style="width:50px" name="total-ayam-geprek-3"></td>
+                <td><input type="number" min="0"  style="width:50px" name="total-ayam-geprek-4"></td>
+              </tr>
+              <tr>
+                <th scope="row">Es Jeruk</th>
+                <td>Rp. 5.000,00</td>
+                <td><input type="number" min="0"  style="width:50px" name="total-es-jeruk-1"></td>
+                <td><input type="number" min="0"  style="width:50px" name="total-es-jeruk-2"></td>
+                <td><input type="number" min="0"  style="width:50px" name="total-es-jeruk-3"></td>
+                <td><input type="number" min="0"  style="width:50px" name="total-es-jeruk-4"></td>
+              </tr>
+              <tr>
+                <th scope="row">Es Teh</th>
+                <td>Rp. 4.000,00</td>
+                <td><input type="number" min="0" style="width:50px" name="total-es-teh-1"></td>
+                <td><input type="number" min="0" style="width:50px" name="total-es-teh-2"></td>
+                <td><input type="number" min="0" style="width:50px" name="total-es-teh-3"></td>
+                <td><input type="number" min="0" style="width:50px" name="total-es-teh-4"></td>
+              </tr>
         
         </tbody>
       </table>
@@ -111,7 +121,7 @@
   
     <br> -->
    <div class="container">
-       <button type="submit" class="btn btn-primary">Checkout</button>
+    <button type="submit" class="btn btn-primary">Simulasi</button>
    </div>
   </form>
 <br>

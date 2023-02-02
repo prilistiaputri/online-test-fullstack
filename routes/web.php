@@ -11,19 +11,26 @@
 |
 */
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HargaController;
 use App\Http\Controllers\KasirController;
 
 //Route::get('/', function () {
  //   return view('welcome');
 //});
 
-Route::get('/1', function () {
-return view('pertemuan1');
-});
 
-Route::get('/yanuar', function () {
-    return view('yanuar');
-    });
+
+Route::get('/pesanan', function () {
+ return view('pesanan');
+   });
+
+//Route::get('/detail-pesanan', function () {
+    //return view('detail-pesanan');
+    // });
+
+      Route::get('/split-bill', function () {
+        return view('split-bill');
+        });
 
 //Route::get('/kasir', function () {
   // return view('kasir');
@@ -32,5 +39,6 @@ Route::get('/yanuar', function () {
 Route::get('/kasir', [KasirController::class, 'index']);
 Route::post('/diskon', [KasirController::class, 'diskon']);
 
-//Route::get('/kasir', 'App\Http\Controllers\KasirController@index');
-//Route::post('/diskon', 'App\Http\Controllers\KasirController@diskon');
+Route::get('/detail-pesanan', [HargaController::class, 'index']);
+Route::post('/diskon', [HargaController::class, 'diskon']);
+
