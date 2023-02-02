@@ -54,7 +54,7 @@
 </div>
 </div>
 <br>
-    <form action="/diskon" method="POST">
+    <form action="/promo" method="POST">
       @csrf
     <div class="container">
     <table class="table">
@@ -69,22 +69,22 @@
           <tr>
             <th scope="row">Mie Ayam</th>
             <td>Rp. 15.000,00</td>
-            <td> <input type="number" min="0"  name="total-mie-ayam"></td>
+            <td> <input type="number" min="0" style="width:50px" name="total-mie-ayam"></td>
           </tr>
           <tr>
             <th scope="row">Ayam Geprek</th>
             <td>Rp. 17.000,00</td>
-            <td><input type="number" min="0"  name="total-ayam-geprek"></td>
+            <td><input type="number" min="0" style="width:50px" name="total-ayam-geprek"></td>
           </tr>
           <tr>
             <th scope="row">Es Jeruk</th>
             <td>Rp. 5.000,00</td>
-            <td><input type="number" min="0"  name="total-es-jeruk"></td>
+            <td><input type="number" min="0" style="width:50px" name="total-es-jeruk"></td>
           </tr>
           <tr>
             <th scope="row">Es Teh</th>
             <td>Rp. 4.000,00</td>
-            <td><input type="number" min="0" name="total-es-teh"></td>
+            <td><input type="number" min="0" style="width:50px" name="total-es-teh"></td>
           </tr>
         
         </tbody>
@@ -111,7 +111,7 @@
   
     <br> -->
    <div class="container">
-       <button type="submit" class="btn btn-primary">Checkout</button>
+       <button type="submit" class="btn btn-primary">Checkout</button></a>
    </div>
   </form>
 <br>
@@ -125,6 +125,8 @@
         {{ session('tampil') }}
       </div>
     @endif
+
+
     </div>
   </div>
 </div>

@@ -11,8 +11,9 @@
 |
 */
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HargaController;
 use App\Http\Controllers\KasirController;
+use App\Http\Controllers\HargaController;
+
 
 //Route::get('/', function () {
  //   return view('welcome');
@@ -37,7 +38,7 @@ Route::get('/pesanan', function () {
 //});
 
 Route::get('/kasir', [KasirController::class, 'index']);
-Route::post('/diskon', [KasirController::class, 'diskon']);
+Route::post('/promo', [KasirController::class, 'promo']);
 
 Route::get('/detail-pesanan', [HargaController::class, 'index']);
 Route::post('/diskon', [HargaController::class, 'diskon']);

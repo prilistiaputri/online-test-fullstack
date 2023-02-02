@@ -12,7 +12,7 @@ class KasirController extends Controller
         return view('kasir');
     }
 
-    public function diskon(Request $request)
+    public function promo(Request $request)
     {
         $total_1 = $request->input('total-mie-ayam');
         $total_2 = $request->input('total-ayam-geprek');

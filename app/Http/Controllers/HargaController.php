@@ -19,6 +19,8 @@ class HargaController extends Controller
         $harga_es_jeruk = 5000;
         $harga_es_teh = 4000;
 
+        
+
 
 
         $total_1 = $request->input('total-mie-ayam-1');
@@ -52,6 +54,12 @@ class HargaController extends Controller
         $total_harga_all = $total_harga_mie_ayam + $total_harga_ayam_geprek + $total_harga_es_jeruk + $total_harga_es_teh;
 
         $ongkir = 5000;
+
+        $customer_1 = 1;
+        $customer_2 = 1;
+        $customer_3 = 1;
+        $customer_4 = 1;
+        $ongkir_customer = $ongkir / ($customer_1 + $customer_2 + $customer_3 + $customer_4);
         $potongan = 0.3;
         $diskon = $total_harga_all * $potongan;
 
@@ -59,14 +67,15 @@ class HargaController extends Controller
         $total_harga_customer_2 = ($total_2 *$harga_mie_ayam) + ($total_6*$harga_ayam_geprek) + ($total_10*$harga_es_jeruk) + ($total_14 * $harga_es_teh);
         $total_harga_customer_3 = ($total_3 *$harga_mie_ayam) + ($total_7*$harga_ayam_geprek) + ($total_11*$harga_es_jeruk) + ($total_15 * $harga_es_teh);
         $total_harga_customer_4 = ($total_4 *$harga_mie_ayam) + ($total_8*$harga_ayam_geprek) + ($total_12*$harga_es_jeruk) + ($total_16 * $harga_es_teh);
-       
-        $ongkir_customer = $ongkir/4;
-
-
+        
+        
        if ($total_harga_all >= 40000 && $diskon <= 30000) {
+        
 
            $diskon = $total_harga_all * $potongan;
            $total_bayar = $total_harga_all - $diskon + $ongkir;
+           
+          
            $diskon_customer_1 = $total_harga_customer_1 * $potongan;
            $diskon_customer_2 = $total_harga_customer_2 * $potongan;
            $diskon_customer_3 = $total_harga_customer_3 * $potongan;
@@ -78,7 +87,8 @@ class HargaController extends Controller
            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer;
            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer;
 
-           
+         
+
                  
          } elseif ($total_harga_all >= 40000 && $diskon > 30000) {
        
