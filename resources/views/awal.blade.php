@@ -19,7 +19,7 @@
        <div class="container-fluid">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-              <a class="navbar-brand" href="/">FOOD.US</a>
+              <a class="navbar-brand" href="">FOOD.US</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -46,87 +46,43 @@
     </nav>
     </div>
     <br><br><br><br> 
-<center><h3>Simulasi Pembelian Online</h3></center>
-<br>
-<div class="container">
-<div class="alert alert-info" role="alert">
-  <marquee><b> Dapatkan Diskon 30% setiap pembelian Minimal Rp. 40.000,00 (Maksimal diskon sebesar Rp. 30.000,00) &emsp; Dapatkan Diskon 30% setiap pembelian Minimal Rp. 40.000,00 (Maksimal diskon sebesar Rp. 30.000,00) </b></marquee>
-</div>
-</div>
-
-
-<br>
-    <form action="/promo" method="POST">
-      @csrf
-    <div class="container">
-    <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Menu</th>
-            <th scope="col">Harga</th>
-            <th scope="col">Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Mie Ayam</th>
-            <td>Rp. 15.000,00</td>
-            <td> <input type="number" min="0" style="width:50px" name="total-mie-ayam"></td>
-          </tr>
-          <tr>
-            <th scope="row">Ayam Geprek</th>
-            <td>Rp. 17.000,00</td>
-            <td><input type="number" min="0" style="width:50px" name="total-ayam-geprek"></td>
-          </tr>
-          <tr>
-            <th scope="row">Es Jeruk</th>
-            <td>Rp. 5.000,00</td>
-            <td><input type="number" min="0" style="width:50px" name="total-es-jeruk"></td>
-          </tr>
-          <tr>
-            <th scope="row">Es Teh</th>
-            <td>Rp. 4.000,00</td>
-            <td><input type="number" min="0" style="width:50px" name="total-es-teh"></td>
-          </tr>
-        
-        </tbody>
-      </table>
-    </div>
-
-
-
-
-
-
-    <!-- <div class="container">
-    <div class="input-group flex-nowrap">
-        <span class="input-group-text" id="addon-wrapping">Quantity</span>
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-      </div>
-    </div> -->
-    
-  
-   <!-- <div class="form-group">
-      <label>Masukkan Total Belanja </label>
-      <input type="text" class="form-control" name="total">
-    </div>
-  
-    <br> -->
-   <div class="container">
-       <button type="submit" class="btn btn-primary">Checkout</button></a>
-   </div>
-  </form>
+<center><h3>Selamat Datang</h3></center>
 <br>
 
 <div class="container">
-<div class="row">
-  <div class="col-md-12">
-
-    @if (session('tampil'))
-      <div class="alert alert-success">
-        {{ session('tampil') }}
+  <div class="row">
+    <div class="col-sm-4 mb-4 mb-sm-0">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Simulasikan pesanan global anda! </h5>
+          <img src="images/global.jpg" height="250" class="card-img-top" alt="...">
+          <p class="card-text">Gunakan simulasi ini untuk menghitung pesanan secara global.</p>
+          <a href="#" class="btn btn-primary">Simulasi</a>
+        </div>
       </div>
-    @endif
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Split Bill pesanan anda!</h5>
+          <img src="images/vector.jpg" height="250" class="card-img-top" alt="...">
+          <p class="card-text"> Tak perlu kesulitan dalam melakukan split bill, gunakan simulasi split bill ini.</p>
+          <a href="#" class="btn btn-primary">Simulasi</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Ini menu andalan anda!</h5>
+            <img src="images/menu.avif" height="250" class="card-img-top" alt="...">
+            <p class="card-text"> Dapatkan penawaran spesial, setiap pembelian tertentu dari menu andalan.</p>
+            <a href="#" class="btn btn-primary">Lihat Detail</a>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
 
 
     </div>

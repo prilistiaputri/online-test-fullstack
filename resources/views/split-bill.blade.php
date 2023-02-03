@@ -10,7 +10,7 @@
     <link rel="stylesheet" href=" {{ url('/css/belajarcss.css') }}">
     <link rel="stylesheet" href=" {{ url('/css/bootstrap.min.css') }}">
   
-    <title>Hello, world!</title>
+    <title>Pembayaran Pesanan</title>
   </head>
   <body>
 
@@ -52,9 +52,10 @@
     <form action="/diskon" method="POST">
       @csrf
     <div class="container">
-    <table class="table">
+    <table class="table table-striped">
         <thead align="center">
           <tr>
+            
             <th scope="col">Menu</th>
             <th scope="col">Harga</th>
             <th scope="col">Yanuar</th>
@@ -62,7 +63,7 @@
             <th scope="col">Habib</th>
             <th scope="col">Zidan</th>
             <th scope="col">Total</th>
-            <th scope="col">Total Harga</th>
+            <th scope="col" >Total Harga</th>
           </tr>
         </thead>
         <tbody>
@@ -145,7 +146,7 @@
             <td align="right"><b> {{session()->get('total-bayar-customer-3')}} </b></td>
             <td align="right"><b> {{session()->get('total-bayar-customer-4')}} </b></td>
             <td></td>
-            <td align="right"><b>{{session()->get('total-bayar')}} </b></td>
+            <td align="right" ><b>{{session()->get('total-bayar')}} </b></td>
           </tr>
         
         </tbody>

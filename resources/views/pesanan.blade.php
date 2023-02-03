@@ -10,7 +10,7 @@
     <link rel="stylesheet" href=" {{ url('/css/belajarcss.css') }}">
     <link rel="stylesheet" href=" {{ url('/css/bootstrap.min.css') }}">
   
-    <title>Hello, world!</title>
+    <title>Rincian Pembayaran Global</title>
   </head>
   <body>
     
@@ -23,7 +23,7 @@
     <form action="/diskon" method="POST">
       @csrf
     <div class="container">
-    <table class="table" name="data-menu">
+    <table class="table table-striped" name="data-menu" >
         <thead>
           <tr>
             <th scope="col">Menu</th>

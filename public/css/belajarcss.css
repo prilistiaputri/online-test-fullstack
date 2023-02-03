@@ -4,3 +4,6 @@ h3
 .navbar-brand {color: aliceblue;}
 
 .nav-link {color: aliceblue;}
+
+.table
+    tr:hover {background-color: #D6EEEE;}
