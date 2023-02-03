@@ -10,7 +10,7 @@
     <link rel="stylesheet" href=" {{ url('/css/belajarcss.css') }}">
     <link rel="stylesheet" href=" {{ url('/css/bootstrap.min.css') }}">
   
-    <title>Input Pesanan Global</title>
+    <title>Halaman Awal</title>
   </head>
   <body>
 
