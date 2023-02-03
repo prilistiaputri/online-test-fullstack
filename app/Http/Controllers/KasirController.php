@@ -30,6 +30,7 @@ class KasirController extends Controller
         $total_akhir = $total_harga_1 + $total_harga_2 + $total_harga_3 + $total_harga_4;
         $diskon = $total_akhir * 0.3;
 
+        
         if ($total_akhir >= 40000 && $diskon <= 30000) {
             $diskon = $total_akhir * 0.3;
             $total_bayar = $total_akhir - $diskon + 5000;

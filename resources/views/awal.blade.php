@@ -31,12 +31,7 @@
                   <li class="nav-item">
                     <a class="nav-link" href="detail-pesanan">Detail Pesanan</a>
                   </li> &nbsp;
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Daftar Menu</a>
-                  </li> &nbsp;
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Ketentuan</a>
-                  </li>
+                 
                 
                 </ul>
               </div>
@@ -55,9 +50,9 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Simulasikan pesanan global anda! </h5>
-          <img src="images/global.jpg" height="250" class="card-img-top" alt="...">
+          <img src="images/global.jpg" height="250" class="card-img-top" alt="gambar pesanan global">
           <p class="card-text">Gunakan simulasi ini untuk menghitung pesanan secara global.</p>
-          <a href="#" class="btn btn-primary">Simulasi</a>
+          <a href="kasir" class="btn btn-primary">Simulasi</a>
         </div>
       </div>
     </div>
@@ -65,9 +60,9 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Split Bill pesanan anda!</h5>
-          <img src="images/vector.jpg" height="250" class="card-img-top" alt="...">
+          <img src="images/vector.jpg" height="250" class="card-img-top" alt="gambar detail pesanan">
           <p class="card-text"> Tak perlu kesulitan dalam melakukan split bill, gunakan simulasi split bill ini.</p>
-          <a href="#" class="btn btn-primary">Simulasi</a>
+          <a href="detail-pesanan" class="btn btn-primary">Simulasi</a>
         </div>
       </div>
     </div>
@@ -77,7 +72,7 @@
             <h5 class="card-title">Ini menu andalan anda!</h5>
             <img src="images/menu.avif" height="250" class="card-img-top" alt="...">
             <p class="card-text"> Dapatkan penawaran spesial, setiap pembelian tertentu dari menu andalan.</p>
-            <a href="#" class="btn btn-primary">Lihat Detail</a>
+            <a href="kasir" class="btn btn-primary">Lihat Detail</a>
           </div>
         </div>
       </div>

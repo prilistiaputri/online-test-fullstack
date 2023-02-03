@@ -131,10 +131,10 @@
           <tr>
             <th scope="row"></th>
             <td align="right"><b>Ongkir</b></td>
-            <td align="right">Rp. 1250,00</td>
-            <td align="right">Rp. 1250,00</td>
-            <td align="right">Rp. 1250,00</td>
-            <td align="right">Rp. 1250,00</td>
+            <td align="right"> {{session()->get('ongkir-customer-1')}} </td>
+            <td align="right">{{session()->get('ongkir-customer-2')}}</td>
+            <td align="right">{{session()->get('ongkir-customer-3')}}</td>
+            <td align="right">{{session()->get('ongkir-customer-4')}}</td>
             <td></td>
             <td align="right">Rp. 5000,00</td>
           </tr>

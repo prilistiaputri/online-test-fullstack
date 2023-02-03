@@ -60,7 +60,14 @@ class HargaController extends Controller
         $total_harga_all = $total_harga_mie_ayam + $total_harga_ayam_geprek + $total_harga_es_jeruk + $total_harga_es_teh;
 
         $ongkir = 5000;
-        $ongkir_customer = $ongkir /4;
+        $ongkir_jenis_1 = $ongkir /4;
+        $ongkir_jenis_2 = $ongkir /3;
+        $ongkir_jenis_3 = $ongkir /2;
+        $ongkir_jenis_4 = $ongkir /1;
+        $ongkir_jenis_5 = 0;
+        $ongkir_customer_1;
+
+
         $potongan = 0.3;
         $diskon = $total_harga_all * $potongan;
 
@@ -72,39 +79,454 @@ class HargaController extends Controller
         
         
        if ($total_harga_all >= 40000 && $diskon <= 30000) {
+        $diskon = $total_harga_all * $potongan;
+        $total_bayar = $total_harga_all - $diskon + $ongkir;
         
 
-           $diskon = $total_harga_all * $potongan;
-           $total_bayar = $total_harga_all - $diskon + $ongkir;
+        $diskon_customer_1 = $total_harga_customer_1 * $potongan;
+        $diskon_customer_2 = $total_harga_customer_2 * $potongan;
+        $diskon_customer_3 = $total_harga_customer_3 * $potongan;
+        $diskon_customer_4 = $total_harga_customer_4 * $potongan;
+        //semua orang membeli
+        if( $total_produk_1 != 0 && $total_produk_2 !=0 && $total_produk_3 !=0 && $total_produk_4 !=0) {
            
-          
-           $diskon_customer_1 = $total_harga_customer_1 * $potongan;
-           $diskon_customer_2 = $total_harga_customer_2 * $potongan;
-           $diskon_customer_3 = $total_harga_customer_3 * $potongan;
-           $diskon_customer_4 = $total_harga_customer_4 * $potongan;
+            $ongkir_customer_1 = $ongkir_jenis_1;
+            $ongkir_customer_2 = $ongkir_jenis_1;
+            $ongkir_customer_3 = $ongkir_jenis_1;
+            $ongkir_customer_4 = $ongkir_jenis_1;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         }
+         //salah satu orang tidak membeli
+        elseif( $total_produk_1 == 0 && $total_produk_2 !=0 && $total_produk_3 !=0 && $total_produk_4 !=0) {
+           
+           $ongkir_customer_1 = $ongkir_jenis_5;
+           $ongkir_customer_2 = $ongkir_jenis_2;
+           $ongkir_customer_3 = $ongkir_jenis_2;
+           $ongkir_customer_4 = $ongkir_jenis_2;
+           $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+           $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+           $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+           $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+        } 
+        elseif( $total_produk_1 != 0 && $total_produk_2 ==0 && $total_produk_3 !=0 && $total_produk_4 !=0) {
+            $ongkir_customer_1 = $ongkir_jenis_2;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_2;
+            $ongkir_customer_4 = $ongkir_jenis_2;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+        }
+        elseif( $total_produk_1 != 0 && $total_produk_2 !=0 && $total_produk_3 ==0 && $total_produk_4 !=0) {
+            $ongkir_customer_1 = $ongkir_jenis_2;
+            $ongkir_customer_2 = $ongkir_jenis_2;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_2;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;      
+        }
+        elseif( $total_produk_1 != 0 && $total_produk_2 !=0 && $total_produk_3 !=0 && $total_produk_4 ==0) {
+            $ongkir_customer_1 = $ongkir_jenis_2;
+            $ongkir_customer_2 = $ongkir_jenis_2;
+            $ongkir_customer_3 = $ongkir_jenis_2;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+        }
+        //dua orang tidak membeli
+        elseif( $total_produk_1 == 0 && $total_produk_2 ==0 && $total_produk_3 !=0 && $total_produk_4 !=0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_3;
+            $ongkir_customer_4 = $ongkir_jenis_3;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         }  
+         elseif( $total_produk_1 == 0 && $total_produk_2 !=0 && $total_produk_3 ==0 && $total_produk_4 !=0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_3;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_3;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         } 
+         elseif( $total_produk_1 == 0 && $total_produk_2 !=0 && $total_produk_3 !=0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_3;
+            $ongkir_customer_3 = $ongkir_jenis_3;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         }  
+         elseif( $total_produk_1 != 0 && $total_produk_2 ==0 && $total_produk_3 ==0 && $total_produk_4 !=0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_3;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_3;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         }
+         elseif( $total_produk_1 != 0 && $total_produk_2 ==0 && $total_produk_3 !=0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_3;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_3;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         }
+         elseif( $total_produk_1 != 0 && $total_produk_2 !=0 && $total_produk_3 ==0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_3;
+            $ongkir_customer_2 = $ongkir_jenis_3;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         }  
+         //tiga orng tidak membeli atau satu orang yang beli 
+         elseif( $total_produk_1 != 0 && $total_produk_2 ==0 && $total_produk_3 ==0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_4;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+         }
+         elseif( $total_produk_1 == 0 && $total_produk_2 !=0 && $total_produk_3 ==0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_4;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+         }
+         elseif( $total_produk_1 == 0 && $total_produk_2 ==0 && $total_produk_3 !=0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_4;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+         }
+         elseif( $total_produk_1 == 0 && $total_produk_2 ==0 && $total_produk_3 ==0 && $total_produk_4 !=0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_4;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+         } 
+         
 
-           
-           $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer;
-           $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer;
-           $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer;
-           $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer;
-                 
-    
-         
-         
-          } elseif ($total_harga_all >= 40000 && $diskon > 30000) {
+
+
+
+          } 
+       elseif ($total_harga_all >= 40000 && $diskon > 30000) {
        
        $diskon = 30000;
        $total_bayar = $total_harga_all - $diskon + $ongkir; 
-       $diskon_customer_1 = $diskon;
-       $diskon_customer_2 = $diskon;
-       $diskon_customer_3 = $diskon;
-       $diskon_customer_4 = $diskon;
-    
-       $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer;
-       $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer;
-       $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer;
-       $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer;     
+       $diskon_jenis_1 = $diskon /4;
+       $diskon_jenis_2 = $diskon /3;
+       $diskon_jenis_3 = $diskon /2;
+       $diskon_jenis_4 = $diskon /1;
+       $diskon_jenis_5 = 0;
+       
+
+       //semua orang membeli
+        if( $total_produk_1 != 0 && $total_produk_2 !=0 && $total_produk_3 !=0 && $total_produk_4 !=0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_1;
+            $ongkir_customer_2 = $ongkir_jenis_1;
+            $ongkir_customer_3 = $ongkir_jenis_1;
+            $ongkir_customer_4 = $ongkir_jenis_1;
+
+            $diskon_customer_1 = $diskon_jenis_1;
+            $diskon_customer_2 = $diskon_jenis_1;
+            $diskon_customer_3 = $diskon_jenis_1;
+            $diskon_customer_4 = $diskon_jenis_1;
+
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         }
+         //salah satu orang tidak membeli
+        elseif( $total_produk_1 == 0 && $total_produk_2 !=0 && $total_produk_3 !=0 && $total_produk_4 !=0) {
+           
+           $ongkir_customer_1 = $ongkir_jenis_5;
+           $ongkir_customer_2 = $ongkir_jenis_2;
+           $ongkir_customer_3 = $ongkir_jenis_2;
+           $ongkir_customer_4 = $ongkir_jenis_2;
+
+           $diskon_customer_1 = $diskon_jenis_5;
+           $diskon_customer_2 = $diskon_jenis_2;
+           $diskon_customer_3 = $diskon_jenis_2;
+           $diskon_customer_4 = $diskon_jenis_2;
+
+           $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+           $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+           $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+           $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+        } 
+        elseif( $total_produk_1 != 0 && $total_produk_2 ==0 && $total_produk_3 !=0 && $total_produk_4 !=0) {
+            $ongkir_customer_1 = $ongkir_jenis_2;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_2;
+            $ongkir_customer_4 = $ongkir_jenis_2;
+
+            $diskon_customer_1 = $diskon_jenis_2;
+            $diskon_customer_2 = $diskon_jenis_5;
+            $diskon_customer_3 = $diskon_jenis_2;
+            $diskon_customer_4 = $diskon_jenis_2;
+
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+        }
+        elseif( $total_produk_1 != 0 && $total_produk_2 !=0 && $total_produk_3 ==0 && $total_produk_4 !=0) {
+            $ongkir_customer_1 = $ongkir_jenis_2;
+            $ongkir_customer_2 = $ongkir_jenis_2;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_2;
+
+            $diskon_customer_1 = $diskon_jenis_2;
+            $diskon_customer_2 = $diskon_jenis_2;
+            $diskon_customer_3 = $diskon_jenis_5;
+            $diskon_customer_4 = $diskon_jenis_2;
+
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;      
+        }
+        elseif( $total_produk_1 != 0 && $total_produk_2 !=0 && $total_produk_3 !=0 && $total_produk_4 ==0) {
+            $ongkir_customer_1 = $ongkir_jenis_2;
+            $ongkir_customer_2 = $ongkir_jenis_2;
+            $ongkir_customer_3 = $ongkir_jenis_2;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+
+            $diskon_customer_1 = $diskon_jenis_2;
+            $diskon_customer_2 = $diskon_jenis_2;
+            $diskon_customer_3 = $diskon_jenis_2;
+            $diskon_customer_4 = $diskon_jenis_5;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+        }
+        //dua orang tidak membeli
+        elseif( $total_produk_1 == 0 && $total_produk_2 ==0 && $total_produk_3 !=0 && $total_produk_4 !=0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_3;
+            $ongkir_customer_4 = $ongkir_jenis_3;
+
+            $diskon_customer_1 = $diskon_jenis_5;
+            $diskon_customer_2 = $diskon_jenis_5;
+            $diskon_customer_3 = $diskon_jenis_3;
+            $diskon_customer_4 = $diskon_jenis_3;
+
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         }  
+         elseif( $total_produk_1 == 0 && $total_produk_2 !=0 && $total_produk_3 ==0 && $total_produk_4 !=0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_3;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_3;
+
+            $diskon_customer_1 = $diskon_jenis_5;
+            $diskon_customer_2 = $diskon_jenis_3;
+            $diskon_customer_3 = $diskon_jenis_5;
+            $diskon_customer_4 = $diskon_jenis_3;
+
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         } 
+         elseif( $total_produk_1 == 0 && $total_produk_2 !=0 && $total_produk_3 !=0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_3;
+            $ongkir_customer_3 = $ongkir_jenis_3;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+
+            $diskon_customer_1 = $diskon_jenis_5;
+            $diskon_customer_2 = $diskon_jenis_3;
+            $diskon_customer_3 = $diskon_jenis_3;
+            $diskon_customer_4 = $diskon_jenis_5;
+
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         }  
+         elseif( $total_produk_1 != 0 && $total_produk_2 ==0 && $total_produk_3 ==0 && $total_produk_4 !=0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_3;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_3;
+
+            $diskon_customer_1 = $diskon_jenis_3;
+            $diskon_customer_2 = $diskon_jenis_5;
+            $diskon_customer_3 = $diskon_jenis_5;
+            $diskon_customer_4 = $diskon_jenis_3;
+
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         }
+         elseif( $total_produk_1 != 0 && $total_produk_2 ==0 && $total_produk_3 !=0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_3;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_3;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+
+            $diskon_customer_1 = $diskon_jenis_3;
+            $diskon_customer_2 = $diskon_jenis_5;
+            $diskon_customer_3 = $diskon_jenis_3;
+            $diskon_customer_4 = $diskon_jenis_5;
+
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         }
+         elseif( $total_produk_1 != 0 && $total_produk_2 !=0 && $total_produk_3 ==0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_3;
+            $ongkir_customer_2 = $ongkir_jenis_3;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+
+            $diskon_customer_1 = $diskon_jenis_3;
+            $diskon_customer_2 = $diskon_jenis_3;
+            $diskon_customer_3 = $diskon_jenis_5;
+            $diskon_customer_4 = $diskon_jenis_5;
+
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         }  
+         //tiga orng tidak membeli atau satu orang yang beli 
+         elseif( $total_produk_1 != 0 && $total_produk_2 ==0 && $total_produk_3 ==0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_4;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+
+            $diskon_customer_1 = $diskon_jenis_4;
+            $diskon_customer_2 = $diskon_jenis_5;
+            $diskon_customer_3 = $diskon_jenis_5;
+            $diskon_customer_4 = $diskon_jenis_5;
+
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+         }
+         elseif( $total_produk_1 == 0 && $total_produk_2 !=0 && $total_produk_3 ==0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_4;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+
+            $diskon_customer_1 = $diskon_jenis_5;
+            $diskon_customer_2 = $diskon_jenis_4;
+            $diskon_customer_3 = $diskon_jenis_5;
+            $diskon_customer_4 = $diskon_jenis_5;
+
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+         }
+         elseif( $total_produk_1 == 0 && $total_produk_2 ==0 && $total_produk_3 !=0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_4;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+
+            $diskon_customer_1 = $diskon_jenis_5;
+            $diskon_customer_2 = $diskon_jenis_5;
+            $diskon_customer_3 = $diskon_jenis_4;
+            $diskon_customer_4 = $diskon_jenis_5;
+            
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+         }
+         elseif( $total_produk_1 == 0 && $total_produk_2 ==0 && $total_produk_3 ==0 && $total_produk_4 !=0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_4;
+
+            $diskon_customer_1 = $diskon_jenis_5;
+            $diskon_customer_2 = $diskon_jenis_5;
+            $diskon_customer_3 = $diskon_jenis_5;
+            $diskon_customer_4 = $diskon_jenis_4;
+
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+         } 
+       
+         
 
       } elseif ($total_harga_all < 40000) {
             $diskon = 0;
@@ -114,14 +536,193 @@ class HargaController extends Controller
             $diskon_customer_3 = $diskon;
             $diskon_customer_4 = $diskon;
 
-            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer;
-            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer;
-            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer;
-            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer;
+            //semua orang membeli
+        if( $total_produk_1 != 0 && $total_produk_2 !=0 && $total_produk_3 !=0 && $total_produk_4 !=0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_1;
+            $ongkir_customer_2 = $ongkir_jenis_1;
+            $ongkir_customer_3 = $ongkir_jenis_1;
+            $ongkir_customer_4 = $ongkir_jenis_1;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         }
+         //salah satu orang tidak membeli
+        elseif( $total_produk_1 == 0 && $total_produk_2 !=0 && $total_produk_3 !=0 && $total_produk_4 !=0) {
+           
+           $ongkir_customer_1 = $ongkir_jenis_5;
+           $ongkir_customer_2 = $ongkir_jenis_2;
+           $ongkir_customer_3 = $ongkir_jenis_2;
+           $ongkir_customer_4 = $ongkir_jenis_2;
+           $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+           $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+           $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+           $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+        } 
+        elseif( $total_produk_1 != 0 && $total_produk_2 ==0 && $total_produk_3 !=0 && $total_produk_4 !=0) {
+            $ongkir_customer_1 = $ongkir_jenis_2;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_2;
+            $ongkir_customer_4 = $ongkir_jenis_2;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+        }
+        elseif( $total_produk_1 != 0 && $total_produk_2 !=0 && $total_produk_3 ==0 && $total_produk_4 !=0) {
+            $ongkir_customer_1 = $ongkir_jenis_2;
+            $ongkir_customer_2 = $ongkir_jenis_2;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_2;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;      
+        }
+        elseif( $total_produk_1 != 0 && $total_produk_2 !=0 && $total_produk_3 !=0 && $total_produk_4 ==0) {
+            $ongkir_customer_1 = $ongkir_jenis_2;
+            $ongkir_customer_2 = $ongkir_jenis_2;
+            $ongkir_customer_3 = $ongkir_jenis_2;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+        }
+        //dua orang tidak membeli
+        elseif( $total_produk_1 == 0 && $total_produk_2 ==0 && $total_produk_3 !=0 && $total_produk_4 !=0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_3;
+            $ongkir_customer_4 = $ongkir_jenis_3;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         }  
+         elseif( $total_produk_1 == 0 && $total_produk_2 !=0 && $total_produk_3 ==0 && $total_produk_4 !=0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_3;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_3;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         } 
+         elseif( $total_produk_1 == 0 && $total_produk_2 !=0 && $total_produk_3 !=0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_3;
+            $ongkir_customer_3 = $ongkir_jenis_3;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         }  
+         elseif( $total_produk_1 != 0 && $total_produk_2 ==0 && $total_produk_3 ==0 && $total_produk_4 !=0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_3;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_3;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         }
+         elseif( $total_produk_1 != 0 && $total_produk_2 ==0 && $total_produk_3 !=0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_3;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_3;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         }
+         elseif( $total_produk_1 != 0 && $total_produk_2 !=0 && $total_produk_3 ==0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_3;
+            $ongkir_customer_2 = $ongkir_jenis_3;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;
+         }  
+         //tiga orng tidak membeli atau satu orang yang beli 
+         elseif( $total_produk_1 != 0 && $total_produk_2 ==0 && $total_produk_3 ==0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_4;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+         }
+         elseif( $total_produk_1 == 0 && $total_produk_2 !=0 && $total_produk_3 ==0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_4;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+         }
+         elseif( $total_produk_1 == 0 && $total_produk_2 ==0 && $total_produk_3 !=0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_4;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+         }
+         elseif( $total_produk_1 == 0 && $total_produk_2 ==0 && $total_produk_3 ==0 && $total_produk_4 !=0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_4;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+         } 
+         //semua oran tidak membeli
+         elseif( $total_produk_1 == 0 && $total_produk_2 ==0 && $total_produk_3 ==0 && $total_produk_4 ==0) {
+           
+            $ongkir_customer_1 = $ongkir_jenis_5;
+            $ongkir_customer_2 = $ongkir_jenis_5;
+            $ongkir_customer_3 = $ongkir_jenis_5;
+            $ongkir_customer_4 = $ongkir_jenis_5;
+            $total_bayar_customer_1 = $total_harga_customer_1 - $diskon_customer_1 + $ongkir_customer_1;
+            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer_2;
+            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer_3;
+            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer_4;       
+         }  
 
       }
 
         return redirect('/split-bill')
+        ->with('ongkir-customer-1','Rp. '.$ongkir_customer_1. ',00')
+        ->with('ongkir-customer-2','Rp. '.$ongkir_customer_2. ',00')
+        ->with('ongkir-customer-3','Rp. '.$ongkir_customer_3. ',00')
+        ->with('ongkir-customer-4','Rp. '.$ongkir_customer_4. ',00')
+
         ->with('total-harga-customer-1','Rp. '.$total_harga_customer_1. ',00')
         ->with('total-harga-customer-2','Rp. '.$total_harga_customer_2. ',00')
         ->with('total-harga-customer-3','Rp. '.$total_harga_customer_3. ',00')

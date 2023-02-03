@@ -31,12 +31,7 @@
                   <li class="nav-item">
                     <a class="nav-link" href="detail-pesanan">Detail Pesanan</a>
                   </li> &nbsp;
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Daftar Menu</a>
-                  </li> &nbsp;
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Ketentuan</a>
-                  </li>
+                  
                 
                 </ul>
               </div>
