@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Order;
 
 class KasirController extends Controller
 {
+    
+
+
     public function index()
 
     {
+        
         return view('kasir');
     }
 
@@ -62,6 +67,15 @@ class KasirController extends Controller
        
            
         }
+        public function store(Request $request)  {
+            $daftar = $this->validate(request(), [
+            'total-mie-ayam',
+            'total-ayam-geprek',
+            'total-es-jeruk',
+            'total-es-teh',
+            'id' => 'required'
+            ]);
+        }    
          
     }
     

@@ -21,7 +21,7 @@ class HargaController extends Controller
 
         
 
-
+        
 
         $total_1 = $request->input('total-mie-ayam-1');
         $total_2 = $request->input('total-mie-ayam-2');
@@ -51,15 +51,16 @@ class HargaController extends Controller
         $total_es_teh = $total_13 + $total_14 + $total_15 + $total_16;
         $total_harga_es_teh = $total_es_teh * $harga_es_teh;
 
+        $total_produk_1 = $total_1 + $total_5 + $total_9 + $total_13;
+        $total_produk_2 = $total_2 + $total_6 + $total_10 + $total_14;
+        $total_produk_3 = $total_3 + $total_7 + $total_11 + $total_15;
+        $total_produk_4 = $total_4 + $total_8 + $total_12 + $total_16;
+       
+
         $total_harga_all = $total_harga_mie_ayam + $total_harga_ayam_geprek + $total_harga_es_jeruk + $total_harga_es_teh;
 
         $ongkir = 5000;
-
-        $customer_1 = 1;
-        $customer_2 = 1;
-        $customer_3 = 1;
-        $customer_4 = 1;
-        $ongkir_customer = $ongkir / ($customer_1 + $customer_2 + $customer_3 + $customer_4);
+        $ongkir_customer = $ongkir /4;
         $potongan = 0.3;
         $diskon = $total_harga_all * $potongan;
 
@@ -67,6 +68,7 @@ class HargaController extends Controller
         $total_harga_customer_2 = ($total_2 *$harga_mie_ayam) + ($total_6*$harga_ayam_geprek) + ($total_10*$harga_es_jeruk) + ($total_14 * $harga_es_teh);
         $total_harga_customer_3 = ($total_3 *$harga_mie_ayam) + ($total_7*$harga_ayam_geprek) + ($total_11*$harga_es_jeruk) + ($total_15 * $harga_es_teh);
         $total_harga_customer_4 = ($total_4 *$harga_mie_ayam) + ($total_8*$harga_ayam_geprek) + ($total_12*$harga_es_jeruk) + ($total_16 * $harga_es_teh);
+        
         
         
        if ($total_harga_all >= 40000 && $diskon <= 30000) {
@@ -86,11 +88,11 @@ class HargaController extends Controller
            $total_bayar_customer_2 = $total_harga_customer_2 - $diskon_customer_2 + $ongkir_customer;
            $total_bayar_customer_3 = $total_harga_customer_3 - $diskon_customer_3 + $ongkir_customer;
            $total_bayar_customer_4 = $total_harga_customer_4 - $diskon_customer_4 + $ongkir_customer;
-
-         
-
                  
-         } elseif ($total_harga_all >= 40000 && $diskon > 30000) {
+    
+         
+         
+          } elseif ($total_harga_all >= 40000 && $diskon > 30000) {
        
        $diskon = 30000;
        $total_bayar = $total_harga_all - $diskon + $ongkir; 
